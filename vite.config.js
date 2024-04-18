@@ -12,7 +12,7 @@ export default {
     build: {
         rollupOptions: {
             input: {
-                scene: resolve(__dirname, 'scene.html'),
+                scene: resolve(__dirname, 'scene/index.html'),
                 client: resolve(__dirname, 'index.html'),
             },
         },
