@@ -5,6 +5,8 @@ import '/css/scene.scss'
 
 const firebase = useFirebase(config)
 
+console.log('un changement débile');
+
 firebase.onLogin = async (id, user) => {
     console.log('logged in', id);
 };
