@@ -1,48 +1,33 @@
-import useFirebase from '/libs/firebase.js'
-import config from '/firebaseconfig.js'
 import kaboom from "kaboom";
 import '/css/scene.scss'
+import users from './usersystem';
 
-const firebase = useFirebase(config)
-
-console.log('un changement débile');
-
-firebase.onLogin = async (id, user) => {
-    console.log('logged in', id);
-};
 
 kaboom()
 loadSprite("bean", "/sprites/bean.png")
 
 // Add player game object
-const player = add([
-    sprite("bean"),
-    pos(center()),
-    area(),
-    // body() component gives the ability to respond to gravity
-    body(),
-])
-
+users.onNew = (user) => {
+    user.userData.player = add([
+        sprite("bean"),
+        pos(rand(0, width()), rand(0, height())),
+        area(),
+        body(),
+    ])
+};
+users.onRemove = (user) => {
+    user.userData.player.destroy();
+    delete user.userData.player;
+};
 
 onDraw(() => {
 
-    player.moveTo(center())
-
-
-
-    // drawSprite({
-    //     sprite: "bean",
-    //     pos: center(),
-    //     angle: 0,
-    //     anchor: "center",
-    //     scale: 3,
-    // })
+    users.list.forEach((user) => {
+        const player = user.userData.player;
+        player.angle = user.fireData.gyro.x;
+    });
 })
 
-// Accelerate falling when player holding down arrow key
 onKeyDown("space", () => {
     player.destroy();
 })
-
-// https://kaboomjs.com/play?example=scenes
-// avoir une scene par fichier

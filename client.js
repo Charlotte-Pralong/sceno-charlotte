@@ -3,8 +3,6 @@ import useGyro from '/libs/gyro.js'
 import useFirebase from '/libs/firebase.js'
 import config from '/firebaseconfig.js'
 import throttle from 'just-throttle';
-import { ref, set } from 'firebase/database';
-
 
 const gyro = useGyro()
 const firebase = useFirebase(config)
@@ -14,6 +12,7 @@ firebase.onLogin = async (id, user) => {
     const userPath = `/users/${id}`;
 
     firebase.send(userPath, {
+        gyro: { x: 0, y: 0, z: 0 },
         // name: "user.displayName2",
         // email: user.email,
     }, true);
@@ -26,16 +25,10 @@ firebase.onLogin = async (id, user) => {
         });
     }, 500);
 
-    firebase.send(userPath + "/gyro", {
-        x: 0,
-        y: 0,
-        z: 0,
-    });
-
     gyro.onValue = (event) => sendGyro(event);
 };
 
 document.addEventListener('click', () => {
     gyro.enable();
-    console.log('adksfjh');
+    // console.log('adksfjh');
 })
