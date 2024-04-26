@@ -9,6 +9,7 @@ const list = [];
 const api = {
     list,
     onNew: (user) => { },
+    
     onRemove: (user) => { },
 }
 
