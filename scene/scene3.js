@@ -24,7 +24,6 @@ loadSprite("fleur", "/MAISON/fleur-maison.png");
 
 add([
     sprite("maison1"),
-  //position au milieu de l'écran:
   pos(600,450),
 
   

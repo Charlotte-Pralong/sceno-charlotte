@@ -92,13 +92,13 @@ function animateFrames() {
 setInterval(animateFrames, frameRate);
 
 
-onKeyDown("space", () => {
-    // Toggle play/pause de l'animation
-    if (isAnimating) {
-        clearInterval(animationInterval);
-        isAnimating = false;
-    } else {
-        animationInterval = setInterval(animateFrames, frameRate);
-        isAnimating = true;
-    }
-});
+// onKeyDown("space", () => {
+//     // Toggle play/pause de l'animation
+//     if (isAnimating) {
+//         clearInterval(animationInterval);
+//         isAnimating = false;
+//     } else {
+//         animationInterval = setInterval(animateFrames, frameRate);
+//         isAnimating = true;
+//     }
+// });
