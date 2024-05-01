@@ -4,7 +4,6 @@ import Firebase from "../libs/NewFirebase";
 
 export default class Scene2 {
   constructor(kaboom, frames) {
-    console.log("Scene2");
     Firebase.send(`charlotte/activeScene`, 2);
     this.kaboom = kaboom;
     this.kaboomSetup();
@@ -79,6 +78,7 @@ export default class Scene2 {
         user.id = id;
         // // on ajoute l'utilisateur à la liste des utilisateurs
         UsersSystem.add(user);
+
         Firebase.listenToPath(`charlotte/clicks/${id}`, "click");
       });
     });
@@ -106,6 +106,7 @@ export default class Scene2 {
       });
     });
   }
+
   destroy() {
     Firebase.removeListeners();
     UsersSystem.clear();

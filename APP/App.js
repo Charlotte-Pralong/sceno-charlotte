@@ -6,6 +6,7 @@ import kaboom from "kaboom";
 import Scene1 from "./scene1/index.js";
 import Scene2 from "./scene2/index.js";
 import Scene3 from "./scene3/index.js";
+
 import InterfaceTest from "./libs/InterfaceTest.js";
 
 export default class App {
@@ -35,20 +36,7 @@ export default class App {
       debug: true,
     });
     const SCENE_ID = 1;
-    switch (SCENE_ID) {
-      case 1:
-        this.removeAllScenes();
-        this.SCENE = new Scene1(this.KABOOM, this.frames_scene1);
-        break;
-      case 2:
-        this.removeAllScenes();
-        this.SCENE = new Scene2(this.KABOOM, this.frames_scene2);
-        break;
-      case 3:
-        this.removeAllScenes();
-        this.SCENE = new Scene3(this.KABOOM);
-        break;
-    }
+    this.setupScene(SCENE_ID);
   }
 
   removeAllScenes() {
@@ -57,22 +45,25 @@ export default class App {
 
   setupFirebaseListeners() {
     const interfaceTest = new InterfaceTest();
+
     interfaceTest.addEventListener("keydown", (e) => {
       const SCENE_ID = parseInt(e.key);
-      switch (SCENE_ID) {
-        case 1:
-          this.removeAllScenes();
-          this.SCENE = new Scene1(this.KABOOM, this.frames_scene1);
-          break;
-        case 2:
-          this.removeAllScenes();
-          this.SCENE = new Scene2(this.KABOOM, this.frames_scene2);
-          break;
-        case 3:
-          this.removeAllScenes();
-          this.SCENE = new Scene3(this.KABOOM);
-          break;
-      }
+      this.setupScene(SCENE_ID);
     });
+  }
+
+  setupScene(scene_id) {
+    this.removeAllScenes();
+    switch (scene_id) {
+      case 1:
+        this.SCENE = new Scene1(this.KABOOM, this.frames_scene1);
+        break;
+      case 2:
+        this.SCENE = new Scene2(this.KABOOM, this.frames_scene2);
+        break;
+      case 3:
+        this.SCENE = new Scene3(this.KABOOM);
+        break;
+    }
   }
 }

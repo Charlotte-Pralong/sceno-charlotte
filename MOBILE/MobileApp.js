@@ -20,9 +20,9 @@ export default class MobileApp {
 
   async connect() {
     this.button.classList.add("hidden");
-
     // get the actual scene
     this.scene = await Firebase.getDirect("charlotte/activeScene");
+
     // add event listener to change scene
     Firebase.listenToPath("charlotte/activeScene", "newScene");
     Firebase.addEventListener("newScene", (newScene) => {
@@ -44,6 +44,7 @@ export default class MobileApp {
   changeScene(newScene) {
     this.stopGyro();
     this.flowerButton.classList.add("hidden");
+    // ...effacer tous les éléments d'interface
     switch (newScene) {
       case 1:
         console.log("CHANGE SCENE 1");
@@ -67,7 +68,7 @@ export default class MobileApp {
         this.flowerButton.classList.remove("hidden");
         break;
       case 3:
-        console.log("CHANGE SCENE 2");
+        console.log("CHANGE SCENE 3");
         Firebase.send(`charlotte/users/ids/${this.ID}`, {
           x: 0,
           y: 0,

@@ -30,7 +30,6 @@ export default class Scene1 {
   }
 
   loadFrames(frames) {
-    // const frameCount = 56; // nombre de frames
     const animationName = "animation_scene1_";
     // Charger toutes les frames
     for (let i = 1; i <= frames.length; i++) {
@@ -42,6 +41,7 @@ export default class Scene1 {
     );
     // Ajouter un sprite avec animation manuelle
     this.myAnimatedSprite = add([pos(0, 0), this.frames[0]]);
+
     this.currentFrame = 0;
     this.frame = 0;
     const fps = 10;

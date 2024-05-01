@@ -32,14 +32,6 @@ class UsersSystem {
     removedUser.destroy();
     this.list.splice(removedIndex, 1);
   }
-
-  // followGyro(data) {
-  //   let user = this.list.find((user) => user.id === data.id);
-  //   if (!user) {
-  //     user = this.list[0];
-  //   }
-  //   user.pos.y += data.y;
-  // }
 }
 
 export default new UsersSystem();

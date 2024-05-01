@@ -50,7 +50,7 @@ export default class Scene3 {
       },
     ]);
 
-    // flower.action(() => {
+    // this.flower.action(() => {
     //   flower.angle += 3;
     //   flower.yPos -= 1.5;
     //   flower.xOffset = Math.sin((flower.angle * Math.PI) / 180) * 10;
@@ -80,7 +80,11 @@ export default class Scene3 {
         const id = UsersSystem.verifyNewId(data);
         // si il n'y a pas de nouvel id, on ne fait rien
         if (!id) return;
-        const position = data[id];
+        const user = add([]);
+        user.id = id;
+        // // on ajoute l'utilisateur à la liste des utilisateurs
+        UsersSystem.add(user);
+
         // this.createAndAnimateFlower(position.x, position.y);
       });
     });
