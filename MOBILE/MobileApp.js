@@ -42,7 +42,6 @@ export default class MobileApp {
   }
 
   changeScene(newScene) {
-    // Firebase.removeListeners();
     this.stopGyro();
     this.flowerButton.classList.add("hidden");
     switch (newScene) {
@@ -86,7 +85,6 @@ export default class MobileApp {
   initGyro() {
     this.gyro.enable();
     const sendGyro = throttle((event) => {
-      // console.log(event);
       Firebase.send(`charlotte/gyro/${this.ID}`, {
         x: event.rotationRate.beta,
         y: -event.rotationRate.alpha,
