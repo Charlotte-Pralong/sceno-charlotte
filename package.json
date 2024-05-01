@@ -6,17 +6,20 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:mobile": "vite --config vite.config.js mobile --host"
   },
   "devDependencies": {
     "vite": "^4.1.0"
   },
   "dependencies": {
-    "@vitejs/plugin-basic-ssl": "^1.0.1",
+    "@onemorestudio/eventemitterjs": "^1.0.0",
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
     "firebase": "^10.11.0",
     "just-throttle": "^4.2.0",
     "kaboom": "^3000.1.17",
     "normalize.css": "^8.0.1",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "uuid": "^9.0.1"
   }
 }

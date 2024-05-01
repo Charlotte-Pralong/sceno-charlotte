@@ -1,24 +1,21 @@
 // vite.config.js
-import basicSsl from '@vitejs/plugin-basic-ssl'
-import { resolve } from 'path'
-
+import basicSsl from "@vitejs/plugin-basic-ssl";
+import { resolve } from "path";
 
 export default {
+  server: {
+    port: 8080,
+    https: true,
+  },
 
-    server: {
-        port: 443,
+  build: {
+    rollupOptions: {
+      input: {
+        mobile: resolve(__dirname, "MOBILE/index.html"),
+        home: resolve(__dirname, "index.html"),
+      },
     },
+  },
 
-    build: {
-        rollupOptions: {
-            input: {
-                scene: resolve(__dirname, 'scene/index.html'),
-                client: resolve(__dirname, 'index.html'),
-            },
-        },
-    },
-
-    plugins: [
-        basicSsl()
-    ]
-}
+  plugins: [basicSsl()],
+};

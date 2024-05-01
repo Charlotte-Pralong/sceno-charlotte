@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+  body {
+    margin: 0px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    #connect {
+      &.hidden {
+        display: none;
+      }
+    }
+    #create_flowers {
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+}
