@@ -56,7 +56,6 @@ export default class Scene2 {
 
   startAnimation(fps = 10) {
     onDraw(() => {
-      //   console.log("draw");
       if (this.frame % fps == 0) {
         this.animateFrames();
         this.frame = 0;
@@ -76,22 +75,10 @@ export default class Scene2 {
         const id = UsersSystem.verifyNewId(data);
         // si il n'y a pas de nouvel id, on ne fait rien
         if (!id) return;
-        const position = data[id];
-        // // Pour un nouvel utilisateur, on ajoute un sprite avec une animation
-        // const user = add([
-        //   sprite("fleur"),
-        //   pos(position.x, position.y),
-        //   area(),
-        // ]);
         const user = add([]);
         user.id = id;
         // // on ajoute l'utilisateur à la liste des utilisateurs
         UsersSystem.add(user);
-        // user.on("animEnd", (animName) => {
-        //   if (animName === "fleurir") {
-        //     destroy(user);
-        //   }
-        // });
         Firebase.listenToPath(`charlotte/clicks/${id}`, "click");
       });
     });
@@ -105,7 +92,6 @@ export default class Scene2 {
       console.log("click", data);
       const user = UsersSystem.list.find((user) => user.id === data.id);
       if (!user) return;
-      console.log("add anim");
       const position = data;
       const newSprite = add([
         sprite("fleur"),

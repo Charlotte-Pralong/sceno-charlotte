@@ -55,7 +55,6 @@ export default class Scene1 {
 
   startAnimation(fps = 10) {
     onDraw(() => {
-      //   console.log("draw");
       if (this.frame % fps == 0) {
         this.animateFrames();
         this.frame = 0;

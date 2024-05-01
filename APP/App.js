@@ -1,9 +1,6 @@
-import useGyro from "./libs/gyro.js";
-// import useFirebase from "./libs/firebase.js";
 import Firebase from "./libs/NewFirebase.js";
 import config from "./config/firebaseconfigTest.js";
 import Utils from "./libs/utils.js";
-// import throttle from "just-throttle";
 import kaboom from "kaboom";
 
 import Scene1 from "./scene1/index.js";
@@ -13,7 +10,6 @@ import InterfaceTest from "./libs/InterfaceTest.js";
 
 export default class App {
   constructor() {
-    // this.gyro = useGyro();
     Firebase.config = config;
     Firebase.clear(["charlotte"]);
     this.preloadImages();

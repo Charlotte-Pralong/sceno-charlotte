@@ -25,20 +25,7 @@ export default class Scene3 {
     this.allElements = [];
     this.allElements.push(add([sprite("maison1"), pos(600, 450)]));
     this.allElements.push(add([sprite("maison2"), pos(600, 450)]));
-    // // const frameCount = 56; // nombre de frames
-    // const animationName = "animation_scene1_";
-    // // Charger toutes les frames
-    // for (let i = 1; i <= frames.length; i++) {
-    //   loadSprite(`${animationName}${i}`, frames[i - 1].src);
-    // }
-    // // Créer une animation à partir des frames chargées
-    // this.frames = Array.from({ length: frames.length }, (_, i) =>
-    //   sprite(`${animationName}${i + 1}`)
-    // );
-    // Ajouter un sprite avec animation manuelle
-    // this.myAnimatedSprite = add([pos(0, 0), this.frames[0]]);
-    // this.currentFrame = 0;
-    // this.frame = 0;
+
     const fps = 10;
     this.startAnimation(fps);
   }
@@ -49,14 +36,7 @@ export default class Scene3 {
   }
 
   startAnimation(fps = 10) {
-    onDraw(() => {
-      //   console.log("draw");
-      // if (this.frame % fps == 0) {
-      //   this.animateFrames();
-      //   this.frame = 0;
-      // }
-      // this.frame++;
-    });
+    onDraw(() => {});
   }
 
   createAndAnimateFlower(startX, startY) {
@@ -95,27 +75,13 @@ export default class Scene3 {
     // Que fait-on quand l'événement "newUser" est déclenché ?
     Firebase.addEventListener("newUser", (data) => {
       console.log("new user", data);
-
       Object.keys(data).forEach((key) => {
         // on vérifie si l'id est nouveau
         const id = UsersSystem.verifyNewId(data);
         // si il n'y a pas de nouvel id, on ne fait rien
         if (!id) return;
-        // // Pour un nouvel utilisateur, on ajoute un sprite avec une animation
-        // const user = add([
-        //   sprite("oiseau"),
-        //   pos(rand(0, width() - 63), rand(0, height() - 40)), // Position initiale aléatoire
-        //   area(),
-        // ]);
         const position = data[id];
-        this.createAndAnimateFlower(position.x, position.y);
-        // user.play("voler");
-        // user.id = id;
-        // // on ajoute l'utilisateur à la liste des utilisateurs
-        // UsersSystem.add(user);
-        // // gestion du gyro pour les utilisateurs
-        // const path = `gyro/${id}`;
-        // Firebase.listenToPath(path, "gyro");
+        // this.createAndAnimateFlower(position.x, position.y);
       });
     });
 
@@ -124,11 +90,6 @@ export default class Scene3 {
       console.log("remove user");
       UsersSystem.removeUser(data);
     });
-    // //
-    // Firebase.addEventListener("gyro", (data) => {
-    //   console.log("gyro", data);
-    //   UsersSystem.followGyro(data);
-    // });
   }
 
   destroy() {
